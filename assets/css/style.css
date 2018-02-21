@@ -1,0 +1,28 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    color: black;
+    margin-left: 35px;
+    font-weight: bold;
+}
+
+.bg {
+    background-image: url("../images/mario_large.png"), url("../images/clouds.jpg");
+    background-size: 30%, cover;
+    background-repeat: no-repeat, no-repeat;
+    height: 100%;
+    background-position: top right;
+    padding-top: 50px;
+}
+
+
+img.img-thumbnail {
+    background-color: transparent;
+    padding: 0 20px;
+    margin: 20 auto;
+}
+
+

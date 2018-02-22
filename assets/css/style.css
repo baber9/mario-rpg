@@ -9,20 +9,36 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
+h1 {
+    font-size: 4em;
+}
+
 .bg {
     background-image: url("../images/mario_large.png"), url("../images/clouds.jpg");
     background-size: 30%, cover;
     background-repeat: no-repeat, no-repeat;
     height: 100%;
     background-position: top right;
-    padding-top: 50px;
+    padding-top: 30px;
+}
+
+.page-header {
+    text-align: center;
+}
+
+.thumbnail {
+    text-align: center;
+    font-weight: bold;
+}
+
+.thumbnail .caption {
+    padding: 0;
+}
+
+div.hp p {
+    margin-bottom: 0;
 }
 
 
-img.img-thumbnail {
-    background-color: transparent;
-    padding: 0 20px;
-    margin: 20 auto;
-}
 
 

@@ -64,8 +64,12 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
     koopa_troopa = new GameChar("Koopa Troopa", 150, 7, 20, 0),
     wario = new GameChar("Wario", 180, 10, 25, 0) ];
 
+    // DOCUMENT READY FUNCTION
+    $(document).ready(function() {
 
-$(document).ready(function() {
+
+    // Animation for H1
+    $("h1").animate({fontSize: '5vmax'}, "slow");
     
     $(".char-select").on("click", characterSelect);
     $(".enemy-select").off("click", enemySelect);
@@ -211,8 +215,20 @@ $(document).ready(function() {
                 $("#system-message").text(`${window[enemy].name} has been defeated. Choose your next enemy to battle.`);
             // if no enemies left
             } else if (characterArray.length <= 1) {
+                
+                // Fade out enemy and VS
                 $("#your-enemies").text("");
+                $("#your-char-2").fadeOut(2000);
+                $("#your-char-3").fadeOut(2000);
+
+                // Show princes in battle spot 1
+                $("#battle-char-1").children("div").html("&nbsp;");
+                $("#battle-char-1").css("visibility", "visible").children("img").attr("src",'assets/images/princess-peach.jpg');
+
+                // Display win message
                 $("#system-message").text(`${window[enemy].name} has been defeated. There are no more enemies to battle.  Congratulations, you have saved Princess Peach from the evils of this world!`);
+
+                // Load Restart Button
                 $("#restart").css("visibility", "visible").on("click", function() {
                     location.reload();
                 });
@@ -222,54 +238,16 @@ $(document).ready(function() {
     };
 
     // END GAME AS WINNER
-    // FIX VERSUS
-    // MINOR CSS
+      // add to object
+    // JQUERY ANIMATIONS
     // GOOGLE FONTS - IF IT DOESN'T LOOK RIGHT
-    // CLEAN UP CSS PAGE
-    // MAKE SURE COMMENTS ARE IN ORDER
-        
-            
-
-    
+    // MAKE SURE COMMENTS ARE IN ORDER on GAME.JS
+    // Add dialogue from Princess peach
 
 
-
-
-    // function CharacterSelect() 
-    // {
-    //     // code
-    // }
-    
-    
-    // $('#btn').off('click', handleClick);
-
-
-
-
-
-
-
-
+    // MAKE BUTTONS (CHAR/ENEMIES) RESPOND WHEN CLICKED with JQUERY
+    // fix versus
 
 });
 
 
-
-// $("#goomba").on("click", function () {
-//     mario.attack(goomba);
-//     console.log("Mario HP: " + mario.hp);
-//     console.log("Goomba HP: " + goomba.hp);
-// });
-
-
-// $("#koopa-troopa").on("click", function () {
-//     mario.attack(koopaTroopa);
-//     console.log("Mario HP: " + mario.hp);
-//     console.log("Koopa Troopa HP: " + koopaTroopa.hp);
-// });
-
-// $("#wario").on("click", function () {
-//     mario.attack(wario);
-//     console.log("Mario HP: " + mario.hp);
-//     console.log("Wario HP: " + wario.hp);
-// });

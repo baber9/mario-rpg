@@ -23,45 +23,76 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
-h2 {
-    font-size: 2.0vmax;
-    color: black;
-}
-
 h1 {
-    font-size: 5.0vmax;
+    font-size: 3em;
     color: #AA3414;
     font-family: 'Righteous', cursive;
-    
+}
+
+h2 {
+    font-size: 2.0vmax;
+    color: orange;
+    font-style: italic;
+    font-weight: bold;
+}
+
+h2#your-enemies {
+    color: black;
 }
 
 .page-header {
     text-align: center;
+    border-bottom: 1px solid #AA3414;
 }
+
+/* Character Cards */
 
 .thumbnail {
     text-align: center;
     font-weight: bold;
     border-radius: 10px;
     letter-spacing: 3px;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid transparent;
+}
+
+.thumbnail:hover {
+    color: #333;
+    border: 2px solid #adadad;
 }
 
 .thumbnail .caption {
     padding: 0;
 }
 
+#battle-char-1, #battle-char-2, #battle-char-3 {
+    visibility: hidden;
+}
 
 div.hp p {
     margin-bottom: 0;
+}
+
+/* System Message and Restart Button */
+
+div#system-message {
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
 }
 
 button#restart {
     visibility: hidden;
 }
 
-#battle-char-1, #battle-char-2, #battle-char-3 {
-    visibility: hidden;
-}
+
+/* Media Queries */
 
 @media only screen and (max-width: 450px) {
     .thumbnail {

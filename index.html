@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Super Mario RPG!</title>
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Righteous" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">   
@@ -13,81 +14,88 @@
 </head>
 <body>
     <div class="bg">
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="page-header">
-                        <h1>Super Mario RPG!!!</h1>
-                    </div>
+
+        <!-- PAGE HEADER -->
+        <div class="row">
+            <div class="col-xs-8 col-xs-10">
+                <div class="page-header">
+                    <h1>Super Mario RPG!</h1>
                 </div>
             </div>
+        </div>
 
         <div class="container-fluid">
+
+            <!-- CHARACTER SELECTION AREA -->
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-lg-4">
+                <div class="col-xs-12 col-sm-10 col-lg-8">
                     <h2 id="your-char">Choose Your Character...</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-3 col-sm-2 col-lg-1">
-                    <div class="thumbnail" id="your-char-1">
+                <div class="col-xs-3 col-sm-2 col-lg-2">
+                    <div class="thumbnail char-select" id="your-char-1">
                         <div class="caption">Mario</div>
                         <img src="assets/images/mario.jpg" alt="Mario" id="mario">
                         <div class="caption hp"><p>120</p></div>
                     </div>
                 </div>
-                <div class="col-xs-3 col-sm-2 col-lg-1">
-                    <div class="thumbnail" id="your-char-2">
+                <div class="col-xs-3 col-sm-2 col-lg-2">
+                    <div class="thumbnail char-select" id="your-char-2">
                         <div class="caption">Goomba</div>
                         <img src="assets/images/goomba.jpg" alt="Goomba" id="goomba">
                         <div class="caption hp"><p>100</p></div>
                     </div>
                 </div>
-                <div class="col-xs-3 col-sm-2 col-lg-1">
-                    <div class="thumbnail" id="your-char-3">
-                        <div class="caption">Koopa Troopa</div>
-                        <img src="assets/images/koopa_troopa.jpg" alt="Koopa Troopa" id="koopa-troopa">
+                <div class="col-xs-3 col-sm-2 col-lg-2">
+                    <div class="thumbnail char-select" id="your-char-3">
+                        <div class="caption">KoopaT</div>
+                        <img src="assets/images/koopa_troopa.jpg" alt="Koopa Troopa" id="koopa_troopa">
                         <div class="caption hp"><p>150</p></div>
                     </div>
                 </div>
-                <div class="col-xs-3 col-sm-2 col-lg-1">
-                    <div class="thumbnail" id="your-char-4">
+                <div class="col-xs-3 col-sm-2 col-lg-2">
+                    <div class="thumbnail char-select" id="your-char-4">
                         <div class="caption">Wario</div>
                         <img src="assets/images/wario.jpg" alt="Wario" id="wario">
                         <div class="caption hp"><p>180</p></div>
                     </div>
                 </div>
             </div>
+
+            <!-- ENEMY SELECTON AREA -->
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-lg-4">
-                    <h2 id="your-enemies">Enemies Available to Battle...</h2>
+                <div class="col-xs-12 col-sm-10 col-lg-8">
+                    <h2 id="your-enemies"><!-- SPACEHOLDER TO LOAD DYNAMIC TEXT --></h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-3 col-sm-2 col-lg-1">
-                    <div class="thumbnail" id="battle-char-1">
-                        <div class="caption">Goomba</div>
-                        <img src="assets/images/goomba.jpg" alt="Goomba" id="goomba">
-                        <div class="caption hp"><p>100</p></div>
+                <div class="col-xs-3 col-sm-2 col-lg-2">
+                    <div class="thumbnail enemy-select" id="battle-char-1">
+                        <!-- SPACEHOLDER FOR ENEMY 1 -->
                     </div>
                 </div>
-                <div class="col-xs-3 col-sm-2 col-lg-1">
-                    <div class="thumbnail" id="battle-char-2">
-                        <div class="caption">Koopa Troopa</div>
-                        <img src="assets/images/koopa_troopa.jpg" alt="Koopa Troopa" id="koopa-troopa">
-                        <div class="caption hp"><p>150</p></div>
+                <div class="col-xs-3 col-sm-2 col-lg-2">
+                    <div class="thumbnail enemy-select" id="battle-char-2">
+                        <!-- SPACEHOLDER FOR ENEMY 2 -->
                     </div>
                 </div>
-                <div class="col-xs-3 col-sm-2 col-lg-1">
-                    <div class="thumbnail" id="battle-char-3">
-                        <div class="caption">Wario</div>
-                        <img src="assets/images/wario.jpg" alt="Wario" id="wario">
-                        <div class="caption hp"><p>180</p></div>
+                <div class="col-xs-3 col-sm-2 col-lg-2">
+                    <div class="thumbnail enemy-select" id="battle-char-3">
+                        <!-- SPACEHOLDER FOR ENEMY 3 -->
                     </div>
                 </div>
             </div>
+
+            <!-- SYSTEM MESSAGE AREA -->
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-md-4">
-                    <h2 id="system-message">System Message(red) (hidden)</h2>
+                <div class="col-xs-12 col-sm-8">
+                    <h2><div class="alert alert-info" id="system-message">Welcome to Super Mario RPG!  To get started, please choose your character.</div></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">
+                    <button type="button" class="btn btn-default" id="restart">Restart</button>
                 </div>
             </div>
         </div>

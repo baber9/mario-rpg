@@ -1,16 +1,10 @@
+
+/* Background Styles */
+
 body, html {
     height: 100%;
     margin: 0;
-}
-
-h1, h2, h3 {
-    color: black;
-    margin-left: 35px;
-    font-weight: bold;
-}
-
-h1 {
-    font-size: 4em;
+    font-family: 'Arimo', sans-serif;
 }
 
 .bg {
@@ -19,7 +13,26 @@ h1 {
     background-repeat: no-repeat, no-repeat;
     height: 100%;
     background-position: top right;
-    padding-top: 30px;
+}
+
+/* Content Styles */
+
+h1, h2, h3 {
+    color: black;
+    margin-left: px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2.0vmax;
+    color: black;
+}
+
+h1 {
+    font-size: 5.0vmax;
+    color: #AA3414;
+    font-family: 'Righteous', cursive;
+    
 }
 
 .page-header {
@@ -29,16 +42,30 @@ h1 {
 .thumbnail {
     text-align: center;
     font-weight: bold;
+    border-radius: 10px;
+    letter-spacing: 3px;
 }
 
 .thumbnail .caption {
     padding: 0;
 }
 
+
 div.hp p {
     margin-bottom: 0;
 }
 
+button#restart {
+    visibility: hidden;
+}
 
+#battle-char-1, #battle-char-2, #battle-char-3 {
+    visibility: hidden;
+}
 
+@media only screen and (max-width: 450px) {
+    .thumbnail {
+        letter-spacing: 0;
+    }
+}
 

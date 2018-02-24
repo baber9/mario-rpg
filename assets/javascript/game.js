@@ -59,7 +59,7 @@ function GameChar(name, hp, ap, cap, attckCtr) {
 }
 
 // Build Characters in Array
-var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0), 
+var characterArray = [ mario = new GameChar("Mario", 120, 12, 15, 0), 
     goomba = new GameChar("Goomba", 100, 6, 5, 0),
     koopa_troopa = new GameChar("Koopa Troopa", 150, 7, 20, 0),
     wario = new GameChar("Wario", 180, 10, 25, 0) ];
@@ -207,7 +207,14 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
             // if you die
         if (window[character].hp <= 0) {
             $("#your-char-1").css("background-color", "red").children("img").css("filter", "invert(100%)");
-            $("#system-message").text("You have been defeated!  Game Over!").addClass("alert-danger").removeClass("alert-info");
+            // if only you die
+            if (window[enemy].hp <= 0) {
+                $("#system-message").text("You both have died. It's a draw.  Game Over!");
+                $("#your-char-3").css("background-color", "red").children("img").css("filter", "invert(100%)");
+            // if you both die
+            } else {
+                $("#system-message").text("You have been defeated!  Game Over!").addClass("alert-danger").removeClass("alert-info");
+            }
             $("#restart").css("visibility", "visible").on("click", function() {
                 location.reload();
             });

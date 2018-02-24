@@ -69,8 +69,13 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
 
 
     // Animation for H1
-    $("h1").animate({fontSize: '5vmax'}, "slow");
+    $("h1").fadeIn(1000);
+    $("h1").animate({fontSize: '5vmax'}, 500);
     
+    // Animation for Chars
+    $(".char-select").slideDown(1000);
+
+    // Initialize appropriate click divs
     $(".char-select").on("click", characterSelect);
     $(".enemy-select").off("click", enemySelect);
     $("#your-char-3").off("click", battle);
@@ -132,9 +137,9 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
         // Change Text from blank to "Choose Enemy"
         $("#your-enemies").text("Choose Enemy to Battle...");
 
-        console.log(yourCharArray);
-        console.log(charHtmlArray);
+        // sets up click event for enemy divs
         $(".enemy-select").on("click", enemySelect);
+        
     };
         
 
@@ -142,7 +147,7 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
     function enemySelect () {
         
             // Reset bg color (if someone died previously)
-        $("#your-char-3").css("background-color", "white");
+        $("#your-char-3").css("background-color", "white").slideDown(500);
         
             // pulls (child) id for name (ie, 'mario')
         var character = $(this).children().siblings("img").attr("id");
@@ -154,13 +159,12 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
             // Pull html from selected character
         var newHtml = $("#" + charDiv).html();
             // Set html on 3rd spot and make visible
-        $("#your-char-3").html(newHtml).css("visibility", "visible");
+        $("#your-char-3").html(newHtml).css("visibility", "visible").css("display", "none").slideDown(300);
 
             // Remove enemy from available enemies
-        $(this).css("visibility", "hidden");
+        $(this).slideUp(300);
 
             // Change message to "Enemies waiting"
-
         $("#your-enemies").text("Enemies waiting to Battle...");
 
             // Turn off ability to click enemies
@@ -176,6 +180,7 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
     // BATTLE FUNCTION
     function battle () {
 
+        // Assign battle participants in vars
         var enemy = $(this).children("img").attr("id");
         var character = $("#your-char-1").children("img").attr("id");
 
@@ -183,11 +188,10 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
         // Attack (must reference window object)
         window[character].attack(window[enemy]);
 
+        // Disable attack if either die
         if (window[character].hp <= 0 || window[enemy].hp <= 0) {
             $("#your-char-3").off("click");
         }
-        console.log(window[character].name, window[character].hp)
-        console.log(window[enemy].name, window[enemy].hp)
 
         // retrieve AP and attckCtr to display in system message
         var attckPnts = window[character].ap * window[character].attckCtr
@@ -196,24 +200,28 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
         $("#" + character).siblings("div.hp").children("p").text(window[character].hp);
         $("#" + enemy).siblings("div.hp").children("p").text(window[enemy].hp);
 
-        // Display results of battle
+        // Display results of attack in system message div
         $("#system-message").text(`You attacked ${window[enemy].name} for ${attckPnts} damage. 
         ${window[enemy].name} counter attacked for ${window[enemy].cap} damage.`)
 
+            // if you die
         if (window[character].hp <= 0) {
             $("#your-char-1").css("background-color", "red").children("img").css("filter", "invert(100%)");
             $("#system-message").text("You have been defeated!  Game Over!").addClass("alert-danger").removeClass("alert-info");
             $("#restart").css("visibility", "visible").on("click", function() {
                 location.reload();
             });
+            // if enemy dies
         } else if (window[enemy].hp <= 0) {
             $("#your-char-3").css("background-color", "red").children("img").css("filter", "invert(100%)");
-            // if enemies still left
+            $("#your-char-3").slideUp(500);
+
+                // if enemies still left
             if (characterArray.length > 1) {
                 $("#your-enemies").text("Choose Enemy to Battle...");
                 $(".enemy-select").on("click", enemySelect);
                 $("#system-message").text(`${window[enemy].name} has been defeated. Choose your next enemy to battle.`);
-            // if no enemies left
+                // if no enemies left
             } else if (characterArray.length <= 1) {
                 
                 // Fade out enemy and VS
@@ -222,11 +230,23 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
                 $("#your-char-3").fadeOut(2000);
 
                 // Show princes in battle spot 1
-                $("#battle-char-1").children("div").html("&nbsp;");
-                $("#battle-char-1").css("visibility", "visible").children("img").attr("src",'assets/images/princess-peach.jpg');
+                $("#battle-char-1").children("div.caption").text("Princess Peach");
+                $("#battle-char-1").children("div.hp").html("");
+                $("#battle-char-1").fadeIn(3000).children("img").attr("src",'assets/images/princess-peach.jpg');
 
                 // Display win message
-                $("#system-message").text(`${window[enemy].name} has been defeated. There are no more enemies to battle.  Congratulations, you have saved Princess Peach from the evils of this world!`);
+                $("#system-message").text(`${window[enemy].name} has been defeated. There are no more enemies to battle.  Congratulations, you won!`);
+
+                // Remove placeholders for enemies
+                $("#battle-char-3").remove();
+                $("#battle-char-4").remove();
+
+                // Build Message from Princess Peach
+                $("#battle-char-2").addClass("alert-success").css("display", "none").css("visibility", "visible").css("font-size", "20px").html(`${window[character].name}, you're my Hero!  Thank you for saving me from this evil kingdom!
+                 Princess Peach`).parent("div").removeClass("col-xs-3 col-sm-2 col-lg-2").addClass("col-xs-9 col-sm-6 col-lg-4");
+                // Fade In
+                $("#battle-char-2").fadeIn(3000);
+                
 
                 // Load Restart Button
                 $("#restart").css("visibility", "visible").on("click", function() {
@@ -234,20 +254,7 @@ var characterArray = [ mario = new GameChar("Mario", 120, 8, 15, 0),
                 });
             }
         }
-
     };
-
-    // END GAME AS WINNER
-      // add to object
-    // JQUERY ANIMATIONS
-    // GOOGLE FONTS - IF IT DOESN'T LOOK RIGHT
-    // MAKE SURE COMMENTS ARE IN ORDER on GAME.JS
-    // Add dialogue from Princess peach
-
-
-    // MAKE BUTTONS (CHAR/ENEMIES) RESPOND WHEN CLICKED with JQUERY
-    // fix versus
-
 });
 
 

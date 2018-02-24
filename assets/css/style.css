@@ -23,10 +23,12 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
+    /* h1 loads with animation */
 h1 {
     font-size: 3em;
     color: #AA3414;
     font-family: 'Righteous', cursive;
+    display: none;
 }
 
 h2 {
@@ -46,6 +48,11 @@ h2#your-enemies {
 }
 
 /* Character Cards */
+
+    /* Player selection loads with jquery animation */
+.char-select {
+    display: none;
+}
 
 .thumbnail {
     text-align: center;
